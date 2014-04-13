@@ -4,14 +4,27 @@ import sys
 ADC.setup()
 
 class Sensor:
-  def __init__(self, description, units, scale_factor, port, nominal_level, allowed_excursion):
-    self.description = description
-    self.units = units
-    self.scale_factor = scale_factor
-    self.port = port
-    self.units = units
-    self.nominal_level = nominal_level
-    self.allowed_excursion = allowed_excursion # in percent
+  def __init__(self, *args, **kwargs):
+    if len(args) == 1:
+      attributes = args[0]
+    elif len(args) == 6:
+      attributes = {'description': args[0],
+                'units': args[1],
+                'scale_factor': args[2],
+                'port': args[3],
+                'nominal_level': args[4],
+                'allowed_excursion': args[5],
+                'last_raw_value': 0
+    }
+    else:
+      raise AttributeError('Wrong number of attributes passed to constructor')
+
+    self.description = attributes['description']
+    self.units = attributes['units']
+    self.scale_factor = float(attributes['scale_factor'])
+    self.port = attributes['port']
+    self.nominal_level = float(attributes['nominal_level'])
+    self.allowed_excursion = attributes['allowed_excursion'] # in percent
     self.last_raw_value = 0
 
   def get_raw_value(self, refresh=True):
@@ -37,3 +50,6 @@ class Sensor:
     if value is None:
       value = self.get_value(refresh=False)
     return abs((value-self.nominal_level)/self.nominal_level) < self.allowed_excursion
+
+  def __str__(self):
+    print self.description + ' sensor'

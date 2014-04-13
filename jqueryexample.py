@@ -11,9 +11,9 @@
 from flask import Flask, jsonify, render_template, request
 app = Flask(__name__)
 
-import Adafruit_BBIO.GPIO as GPIO
+#import Adafruit_BBIO.GPIO as GPIO
 import time
-from sensor import Sensor
+from logger.sensor import Sensor
   
 def turn_me_on(t):
     GPIO.setup("P8_10", GPIO.OUT)
@@ -26,10 +26,15 @@ def add_numbers():
     a = request.args.get('a', 0, type=int)
     b = request.args.get('b', 0, type=int)
     #turn_me_on(1)
-    s = Sensor('Forward power', '\%', 1, 'P9_37', .8, .5)
+#    s = Sensor('Forward power', '\%', 1, 'P9_37', .8, .5)
     #turn_me_on(1)
-    #return jsonify(result=a + b)
-    return jsonify(result=s.get_value())
+    return jsonify(result=a + b)
+    #return jsonify(result=s.get_value())
+
+@app.route('/_get_latest_sensor_values')
+def get_latest_sensor_values():
+    
+    #return jsonify(result=s.get_value())
 
 
 @app.route('/')

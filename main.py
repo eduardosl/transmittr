@@ -21,16 +21,11 @@ import threading
 # s = q.get()
 # print s
 
-
-sensors = [Sensor('Forward power', '\%', 1, 'P9_37', .8, .5),
-           Sensor('Reflected power', '\%', 1, 'P9_38', .5, 1),
-           Sensor('Temperature', 'Fahrenheit', 1, 'P9_39', .5, .8)]
-
-print __name__
 if __name__== "__main__": 
 	db = DB()
 	l = Logger(db)
-	l.add_sensor_list(sensors)
+	l.load_sensors_from_db()
+	#l.add_sensor_list(sensors)
 	while True:
 	  l.check_and_log_reading()
 	  time.sleep(1)
