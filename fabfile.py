@@ -31,4 +31,5 @@ def deploy():
         run('git pull')
         run('bin source/activate')
         run('pip install -r requirements.txt')
+	run('./logger_startup.sh')
         run('touch %s' % WSGI_SCRIPT)

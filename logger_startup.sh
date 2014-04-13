@@ -24,5 +24,3 @@ systemctl stop bonescript-autorun.service
 
 echo
 echo "No server available yet..."
-systemctl enable lighttpd.service
-systemctl start lighttpd.service
