@@ -25,7 +25,7 @@ def prepare_deploy():
 
 def deploy():
     with settings(warn_only=True):
-        if run("test -d %s" % code_dir).failed:
+        if run("test -d %s" % PROJECT_DIR).failed:
             run("git clone https://github.com/eduardosl/transmittr.git %s" % PROJECT_DIR)
     with cd(PROJECT_DIR):
         run('git pull')
