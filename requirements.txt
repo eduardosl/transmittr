@@ -1,9 +1,13 @@
+Fabric==1.8.3
 Flask==0.10.1
 Jinja2==2.7.2
 MarkupSafe==0.19
 Werkzeug==0.9.4
 backports.ssl-match-hostname==3.4.0.2
+ecdsa==0.11
 itsdangerous==0.24
+paramiko==1.12.3
+pycrypto==2.6.1
 redis==2.9.1
 tornado==3.2
 wsgiref==0.1.2
