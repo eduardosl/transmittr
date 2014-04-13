@@ -10,7 +10,7 @@ ntpdate pool.ntp.org
 
 echo
 echo "Starting logger"
-python ~/logger/main.py &
+python ~/transmittr/main.py &
 
 echo
 echo "Starting web server"

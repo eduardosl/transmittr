@@ -29,7 +29,8 @@ def deploy():
             run("git clone https://github.com/eduardosl/transmittr.git %s" % PROJECT_DIR)
     with cd(PROJECT_DIR):
         run('git pull')
-        run('bin source/activate')
+        #run('bin source/activate') # virtualenv on the beaglebone is broken...
         run('pip install -r requirements.txt')
-	run('./logger_startup.sh')
+        run('chmod +x logger_startup.sh')
+        run('./logger_startup.sh')
         run('touch %s' % WSGI_SCRIPT)
