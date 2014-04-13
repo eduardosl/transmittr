@@ -4,7 +4,7 @@ from email.mime.text import MIMEText
 import DB
 
 def notify_abnormal_reading(time, abnormal_sensors):
-	DB.get_value('Notification Settings')
+	#DB.get_value('Notification Settings')
   	msg = 'Abnormal readings on ' + \
   		   time.strftime('%b %d, %Y at %H:%M:%S') + ":\n"
   	for sensor in abnormal_sensors:

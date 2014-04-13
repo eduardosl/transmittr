@@ -1,6 +1,6 @@
-from logger import Logger
-from sensor import Sensor
-from DB import DB
+from logger.logger import Logger
+from logger.sensor import Sensor
+from logger.DB import DB
 import time
 import Queue
 import threading

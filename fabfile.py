@@ -24,14 +24,11 @@ def prepare_deploy():
     push()
 
 def deploy():
+    with settings(warn_only=True):
+        if run("test -d %s" % code_dir).failed:
+            run("git clone https://github.com/eduardosl/transmittr.git %s" % PROJECT_DIR)
     with cd(PROJECT_DIR):
         run('git pull')
         run('bin source/activate')
         run('pip install -r requirements.txt')
         run('touch %s' % WSGI_SCRIPT)
-    with settings(warn_only=True):
-        if run("test -d %s" % code_dir).failed:
-            run("git clone https://github.com/eduardosl/transmittr.git %s" % PROJECT_DIR)
-    with cd(PROJECT_DIR):
-        run("git pull")
-        run("touch app.wsgi")
