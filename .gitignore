@@ -1,0 +1,12 @@
+# Virtualenv
+.Python
+bin/*
+lib/*
+include/*
+
+# Mac OS X custom attribute files
+.DS_store
+
+# Python compiled scripts
+*.pyc
+*.pyo
